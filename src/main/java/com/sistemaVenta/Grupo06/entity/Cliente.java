@@ -1,5 +1,6 @@
 package com.sistemaVenta.Grupo06.entity;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,4 +26,8 @@ public class Cliente {
 
     
 	
+=======
+public class Cliente {
+
+>>>>>>> f249ec7575d874d9b0ee0a8c1564973c4c39072c
 }
