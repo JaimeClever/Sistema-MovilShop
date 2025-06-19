@@ -24,7 +24,6 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
 
-
                         
                         // ✅ Registro del primer admin (público)
                         .requestMatchers("/api/usuarios/admin").permitAll()
