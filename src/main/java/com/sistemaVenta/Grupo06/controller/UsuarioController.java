@@ -28,5 +28,15 @@ public class UsuarioController {
         }
     }
 
+    @PostMapping("/vendedor")
+    public ResponseEntity<?> registrarVendedor(@RequestBody UsuarioDTO dto) {
+        try {
+            Usuario vendedor = usuarioService.registrarVendedor(dto);
+            return ResponseEntity.status(HttpStatus.CREATED).body(vendedor);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
+        }
+    }
+
 
 }
