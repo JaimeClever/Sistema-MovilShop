@@ -1,9 +1,6 @@
 package com.sistemaVenta.Grupo06.entity;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,31 +8,25 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-<<<<<<< HEAD
+
 
 @Entity
 @Table(name = "detalle_venta")
 public class DetalleVenta {
 
     @Id
-=======
 
-@Entity
-@Table(name = "detalle_venta")
-public class DetalleVenta {
-	@Id
->>>>>>> develop
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Integer cantidad;
     private Double precio;
-<<<<<<< HEAD
+
     private Double subtotal; // ✅ Agregar este campo
 
-=======
-    private Double subtotal; 
->>>>>>> develop
+
+
     @ManyToOne
     @JoinColumn(name = "producto_id")
     private Producto producto;
@@ -44,11 +35,9 @@ public class DetalleVenta {
     @JoinColumn(name = "venta_id")
     private Venta venta;
 
-<<<<<<< HEAD
+
     // Getters y Setters
-=======
-   
->>>>>>> develop
+
 
     public Long getId() {
         return id;
