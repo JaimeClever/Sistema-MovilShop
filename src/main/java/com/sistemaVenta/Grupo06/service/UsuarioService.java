@@ -32,7 +32,7 @@ public class UsuarioService {
 
         Rol rolAdmin = rolRepository.findByNombre(Rol.NombreRol.ADMIN)
                 .orElseThrow(() -> new RuntimeException("Rol ADMIN no existe"));
-        usuario.getRoles().add(rolAdmin);
+        usuario.getRoles().add(rolAdmin);// OBTIENE EL ROL Y LO ASIGANA AL USUARIO
 
         return usuarioRepository.save(usuario);
     }
@@ -45,15 +45,12 @@ public class UsuarioService {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username;
 
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails) principal).getUsername();
+        if (principal instanceof UserDetails) {username = ((UserDetails) principal).getUsername();
         } else {
             username = principal.toString();
         }
-
         Usuario admin = usuarioRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("Usuario autenticado no encontrado"));
-
         // Verificar si tiene rol ADMIN
         boolean esAdmin = admin.getRoles().stream()
                 .anyMatch(rol -> rol.getNombre() == Rol.NombreRol.ADMIN);
@@ -61,13 +58,11 @@ public class UsuarioService {
         if (!esAdmin) {
             throw new RuntimeException("Solo el administrador puede registrar vendedores");
         }
-
-        // Validar si ya existe el username
+        // Verificar si el vendedor ya está registrado
         if (usuarioRepository.existsByUsername(dto.getUsername())) {
             throw new RuntimeException("Usuario ya registrado");
         }
-
-        // Crear vendedor
+        // Crear el nuevo usuario vendedor
         Usuario vendedor = new Usuario();
         vendedor.setUsername(dto.getUsername());
         vendedor.setPassword(passwordEncoder.encode(dto.getPassword()));
