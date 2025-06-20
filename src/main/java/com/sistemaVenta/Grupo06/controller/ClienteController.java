@@ -25,7 +25,7 @@ public class ClienteController {
 	@Autowired
     private ClienteService clienteService;
 	
-	@PostMapping("/crear")
+	@PostMapping
     public ResponseEntity<Cliente> crear(@RequestBody Cliente cliente) {
         Cliente nuevo = clienteService.guardar(cliente);
         return ResponseEntity.ok(nuevo);

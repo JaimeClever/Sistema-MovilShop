@@ -17,9 +17,10 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "ventas")
 public class Venta {
-	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long id;
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
 
 
 	    private LocalDate fecha;
@@ -27,74 +28,74 @@ public class Venta {
 	 
 	    private Double total;
 
-	    @ManyToOne
-	    @JoinColumn(name = "cliente_id")
-	    private Cliente cliente;
 
-	    @ManyToOne
-	    @JoinColumn(name = "vendedor_id")
-	    private Usuario vendedor;
 
-	    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
-	    private List<DetalleVenta> detalles;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
-	    public Venta() {
-	    }
+    @ManyToOne
+    @JoinColumn(name = "vendedor_id")
+    private Usuario vendedor;
 
-	    public Venta(Long id, LocalDate fecha, Double total, Cliente cliente, Usuario vendedor, List<DetalleVenta> detalles) {
-	        this.id = id;
-	        this.fecha = fecha;
-	        this.total = total;
-	        this.cliente = cliente;
-	        this.vendedor = vendedor;
-	        this.detalles = detalles;
-	    }
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
+    private List<DetalleVenta> detalles;
 
-	    public Long getId() {
-	        return id;
-	    }
+    public Venta() {
+    }
 
-	    public void setId(Long id) {
-	        this.id = id;
-	    }
+    public Venta(Long id, LocalDate fecha, Double total, Cliente cliente, Usuario vendedor, List<DetalleVenta> detalles) {
+        this.id = id;
+        this.fecha = fecha;
+        this.total = total;
+        this.cliente = cliente;
+        this.vendedor = vendedor;
+        this.detalles = detalles;
+    }
 
-	    public LocalDate getFecha() {
-	        return fecha;
-	    }
+    public Long getId() {
+        return id;
+    }
 
-	    public void setFecha(LocalDate fecha) {
-	        this.fecha = fecha;
-	    }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	    public Double getTotal() {
-	        return total;
-	    }
+    public LocalDate getFecha() {
+        return fecha;
+    }
 
-	    public void setTotal(Double total) {
-	        this.total = total;
-	    }
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
 
-	    public Cliente getCliente() {
-	        return cliente;
-	    }
+    public Double getTotal() {
+        return total;
+    }
 
-	    public void setCliente(Cliente cliente) {
-	        this.cliente = cliente;
-	    }
+    public void setTotal(Double total) {
+        this.total = total;
+    }
 
-	    public Usuario getVendedor() {
-	        return vendedor;
-	    }
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-	    public void setVendedor(Usuario vendedor) {
-	        this.vendedor = vendedor;
-	    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
-	    public List<DetalleVenta> getDetalles() {
-	        return detalles;
-	    }
+    public Usuario getVendedor() {
+        return vendedor;
+    }
 
-	    public void setDetalles(List<DetalleVenta> detalles) {
-	        this.detalles = detalles;
-	    }
+    public void setVendedor(Usuario vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public List<DetalleVenta> getDetalles() {
+        return detalles;
+    }
+
+
 }
