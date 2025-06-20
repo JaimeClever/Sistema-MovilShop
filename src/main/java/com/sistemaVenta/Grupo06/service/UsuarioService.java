@@ -79,5 +79,17 @@ public class UsuarioService {
 
         return usuarioRepository.save(vendedor);
     }
+
+// metodo encargado de autenticar al usuario
+    public Usuario loginUsuario(String username, String password) {
+        Usuario usuario = usuarioRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        if (!passwordEncoder.matches(password, usuario.getPassword())) {
+            throw new RuntimeException("Contraseña incorrecta");
+        }
+
+        return usuario;
+    }
 }
 
