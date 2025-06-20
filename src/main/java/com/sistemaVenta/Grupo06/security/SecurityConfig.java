@@ -24,17 +24,21 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
 
-                        
-                        // ✅ Registro del primer admin (público)
+
+                        // Permitir validacion de usuario sin autenticación
+                        .requestMatchers("/api/verificar/login").permitAll()
+
+
+                        // Registro del primer admin (público)
                         .requestMatchers("/api/usuarios/admin").permitAll()
 
-                        // ✅ Registrar vendedores: solo el admin
+                        // Registrar vendedores: solo el admin
                         .requestMatchers("/api/usuarios/vendedor").hasRole("ADMIN")
 
-                        // ✅ CLIENTES
+                        // CLIENTES
                         .requestMatchers("/api/clientes/**").hasAnyRole("ADMIN", "VENDEDOR")
 
-                        // ✅ PRODUCTOS
+                        //  PRODUCTOS
                         .requestMatchers(HttpMethod.GET, "/api/productos/**").hasAnyRole("ADMIN", "VENDEDOR") // ver productos
                         .requestMatchers(HttpMethod.POST, "/api/productos/**").hasRole("ADMIN") // crear productos
                         .requestMatchers(HttpMethod.PUT, "/api/productos/**").hasRole("ADMIN")  // actualizar productos
