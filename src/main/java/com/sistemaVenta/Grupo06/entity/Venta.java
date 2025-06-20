@@ -3,6 +3,7 @@ package com.sistemaVenta.Grupo06.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,12 +17,14 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "ventas")
 public class Venta {
-
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
-        
-	 private LocalDate fecha;
+
+
+	    private LocalDate fecha;
+
+	 
 	    private Double total;
 
 	    @ManyToOne
@@ -94,6 +97,4 @@ public class Venta {
 	    public void setDetalles(List<DetalleVenta> detalles) {
 	        this.detalles = detalles;
 	    }
-	}
-
-
+}
