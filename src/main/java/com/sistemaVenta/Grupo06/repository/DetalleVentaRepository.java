@@ -7,6 +7,8 @@ import com.sistemaVenta.Grupo06.entity.DetalleVenta;
 
 
 
+
+
 @Repository
 
 public interface DetalleVentaRepository extends JpaRepository<DetalleVenta, Long> {
