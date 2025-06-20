@@ -1,7 +1,4 @@
 package com.sistemaVenta.Grupo06.entity;
-
-
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,7 +27,12 @@ public class DetalleVenta {
     @JoinColumn(name = "venta_id")
     private Venta venta;
 
+
     // Getters y Setters
+
+
+    // Getters y Setters
+
 
     public Long getId() {
         return id;
